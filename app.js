@@ -1,5 +1,6 @@
 const canvas = document.getElementById("jsCanvas");
 const ctx = canvas.getContext("2d");
+const colors = document.getElementsByClassName("jsColor");
 
 canvas.width = 700;
 canvas.height = 700;
@@ -16,19 +17,21 @@ function stopPainting(){
     painting = false;
 }
 
-function onMouseDown(event){
-    painting = true;
-}
 function onMouseMove(event){
     const x = event.offsetX;
     const y = event.offsetY;
-    if(!painting){
+    if(!painting){ //painting의 값은 false 인데, !painting을 하는 이유는 if(조건식)에서 조건식이 true여야 하기 때문이다. 그러니깐 !painting이라는 것은 painting은 false일 때를 말한다.
         ctx.beginPath();
         ctx.moveTo(x,y);
-    }else{
+    }else{ //painting is true
         ctx.lineTo(x,y);
         ctx.stroke();
     }
+}
+
+function handleColorClick(event){
+    const color = event.target.style.backgroundColor;
+    ctx.strokeStyle = color;
 }
 
 if(canvas){
@@ -38,3 +41,5 @@ if(canvas){
     canvas.addEventListener("mouseup",stopPainting);
     canvas.addEventListener("mouseleave",stopPainting);
 }
+
+Array.from(colors).forEach(color => color.addEventListener("click", handleColorClick));
