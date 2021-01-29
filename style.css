@@ -61,3 +61,7 @@ body {
 .controls .controls_range{
     margin-bottom : 30px;
 }
+
+.fillCursor{
+    cursor: url("../paintTool/cursor/paintBucket.cur"),default;
+}

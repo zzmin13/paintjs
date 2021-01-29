@@ -51,13 +51,16 @@ function handleRangeChange(event){
     ctx.lineWidth = brushSize;
 }
 
-function handleModeClick(){
-    if(filling === true){ //fill mode
+function handleModeClick(event){
+    if(filling === true){ //fill mode -> paint mode
         filling = false;
-        mode.innerText ="Fill";
-    } else{ // paint mode
+        mode.innerText = "fill";
+        canvas.classList.toggle("fillCursor");
+    }else{ // paint mode -> fill mode
         filling = true;
-        mode.innerText = "Paint";
+        mode.innerText = "paint";
+        canvas.classList.toggle("fillCursor");
+    
     }
 }
 
