@@ -4,6 +4,8 @@ const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 const saveBtn = document.getElementById("jsSave");
+const editColor = document.getElementById("editColor");
+
 
 const INITIAL_COLOR = "#616161";
 const CANVAS_SIZE = 700;
@@ -83,6 +85,13 @@ function handleSaveClick(){
     link.click();
 }
 
+function handleEditColor(event){
+
+    const selectColor = event.target.value;
+    ctx.strokeStyle = selectColor;
+    ctx.fillStyle =selectColor;
+}
+
 if(canvas){
     //canvas가 존재하는지 확인
     canvas.addEventListener("mousemove",onMouseMove);
@@ -105,4 +114,8 @@ if(mode){
 
 if(saveBtn){
     saveBtn.addEventListener("click",handleSaveClick);
+}
+
+if(editColor){
+    editColor.addEventListener("change",handleEditColor);
 }
